@@ -119,6 +119,135 @@
     <script src="jquery.js"></script>
     <script>
       // Entrer les instructions jQuery ici
+
+      $(function() {
+        // Créer une div form dans le formulaire
+        $('#controles').wrapAll('<form></form>');
+
+      // Modification de la couleur de fond dans la partie texte (div)
+        $('#couleur-fond').change(function() {
+            $('#contenu').css('background-color', $(this).val());
+        });
+
+        // Mettre en "gras", "italique", "souligner" ou "normal" (première <div>)
+        // TODO bug : faire les modification sur les 3 <p>
+        //$('#texte').change(function() {
+        $('#texte').on('change', function() {  
+          $('p').attr({id: $(this).val()});
+
+          $('#Normal').css({'font-style':'normal','font-weight':'normal','text-decoration':'none'});
+          $('#Gras').css({'font-weight':'bold','font-style':'normal','text-decoration':'none'});
+          $('#Italique').css({'font-style':'italic','font-weight':'normal','text-decoration':'none'});
+          $('#Souligne').css({'text-decoration':'underline','font-style':'normal','font-weight':'normal'});
+        });
+        
+      // Modification de la police de tous les texte  
+        $('#police').change(function() {
+          $('p').css('font-family',$(this).val());
+        });
+
+      // TODO : Mettre en gras la première syllabe de chaque phrases (première <div>)Modification de la première phrase du texte  
+        $('#police-prem-phrase').change(function() {
+          $('p:first').css('font-family',$(this).val());
+        });
+
+
+      // TODO : Mettre le enien mot en gras (première <div>)       
+      $('#couleurMot').click(function() {
+        var numero = $('#mot').val();
+        ('p:first').css('background-color','red');
+        //alert(numero);
+
+
+      });
+
+      // Modifier le contour de l'image en utilisant le selecteur bordure images (première <div>)
+      $('#bordure-images').on('change', function() {
+        $('img').attr({id: $(this).val()});
+        $('#Rien').css('border','none');
+        $('#Simple').css('border','1px black solid');
+        $('#Double').css('border','4px black double');
+      });
+    
+      // Bouton de fin       
+        // Mettre le formulaire à zéro (première <div>)
+        $("#raz").click(function(){
+
+        $("form")[0].reset();
+        });
+    
+      });
+      //$('p:contains("reiciendis")').css('background-color','red');
+
+        //$( "p:contains('["I"]')").css( "background-color","red" );
+        /*var biere = $('p')[0].tagName.toLowerCase();
+        $('biere').css('background-color','red');*/
+
+       // $('p>reiciendis').replaceWith('<span>bière<span>');
+
+
+/*
+        var bière = "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.";
+
+        var first = bière.charAt(11);
+        $(first).css('background-color','red');*/
+
+        /*
+        var my = '#contenu';
+        var first = my.charAt(11);
+        $(first).css('background-color','red');*/
+
+//   var Gras = 
+       // $('#prem-car-phrases').change(function() {
+          //var gras = $(this).val().css('font-weight','bold');
+          /*var Gras = $('.Gras').css('font-weight','bold');
+          $('.Normal').css('font-weight','normal');*/
+
+          // https://openclassrooms.com/courses/simplifiez-vos-developpements-javascript-avec-jquery/textes-et-images
+          // :contains tester
+          //$('p:toUpperCase()').css('background-color','red');
+       // });
+/*
+        <div>
+        <label for="prem-car-phrases">Prem caract phrases</label>
+        <select id="prem-car-phrases">
+          <option value="Normal">Normal</option>
+          <option value="Gras">Gras</option>
+        </select>
+      </div>
+*/    // Tester
+      // trim() & charAt()
+      // Affectation d'une bordure aux images
+      //var bordureSimple = $('img').css('border','1px black solid');
+      /*
+        Écriture en caractères rouges du mot spécifié dans le premier paragraphe. Par exemple, si l'utilisateur tape « 10 » dans la zone de texte, le dixième mot du premier paragraphe doit apparaître en caractères rouges.
+      */
+      /*
+        <div>
+        <label for="bordure-images">Bordure images</label>
+        <select id="bordure-images">
+          <option value="Rien">Rien</option>
+          <option value="Simple">Simple</option>
+          <option value="Double">Double</option>
+        </select>
+      </div>
+      */
+        /*
+      <div>
+        <label for="mot">Mot en rouge</label>
+        <input type="text" id="mot" size="2">
+        <button id="couleurMot">OK</button>
+      </div>
+      */
+
+         /* $('#raz').click(efface_formulaire);
+      function efface_formulaire () {
+  $(':input')
+   .not(':submit, :reset, :hidden')
+   .val('#FFFFFF')
+   .prop('checked', false)
+   .prop('selected', false);
+}*/
     </script> 
   </body>
 </html>
